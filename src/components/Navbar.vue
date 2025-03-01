@@ -76,7 +76,7 @@ export default defineComponent({
         box-shadow: 0px 4px 4px #00000040;
         backdrop-filter: blur(10px) brightness(100%);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 20px; /* Adjust padding on scroll */
+        padding: 15px; /* Adjust padding on scroll */
     }
 
     .navbar-content {
@@ -118,7 +118,7 @@ export default defineComponent({
         font-family: "Helvetica-Regular", Helvetica;
         font-weight: 400;
         color: #000000;
-        font-size: 1.5em; /* Use relative units */
+        font-size: 1.2em; /* Use relative units */
         white-space: nowrap;
         text-decoration: none;
     }

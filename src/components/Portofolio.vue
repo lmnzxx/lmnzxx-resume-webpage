@@ -44,8 +44,8 @@
     // Pakai ref untuk projects agar reactive
     const projects = ref<Project[]>([
         {
-            title: "Project 1",
-            description: "Deskripsi singkat tentang project ini.",
+            title: "Car Rental Booking Order Website",
+            description: "A web-based car rental booking system built with PHP. It allows customers to search, book, and manage car rentals online while helping rental owners manage vehicle data and transactions efficiently.",
             image: "/img/project1.png",
         },
         {
@@ -64,38 +64,35 @@
 <style scoped>
     .portofolio-section {
         text-align: center;
-        padding: 100px 0;
+        padding: 64px 0;
     }
 
     .section-title {
         font-size: 2rem;
         font-family: "Helvetica-Regular", Helvetica;
         font-weight: 600;
-        margin-bottom: 50px;
+        margin-top: 0;
+        padding: 20px;
     }
 
     .portofolio-swiper {
-        width: 1200px;
+        max-width: 1200px;
+        width: 100%;
         margin: auto;
-    }
-
-    .swiper {
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .card {
         width: 1200px; 
-        max-width: 100%; 
+        max-width: 100%;
+        height: 640px; 
         margin: auto; 
         background: #fff;
         overflow: hidden;
         text-align: center;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .card-img {
+        object-position: top;
         width: 100%;
         max-height: 480px;
         object-fit: cover;

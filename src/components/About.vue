@@ -48,7 +48,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+        min-height: 80vh;
         background-color: #ffffff;
         padding: 40px 20px;
     }

@@ -4,10 +4,11 @@
   import Hero from './components/Hero.vue';
   import About from './components/About.vue';
   import Portofolio from './components/Portofolio.vue';
+  import Contact from './components/Contact.vue';
 
   defineComponent({
       name: 'App',
-      components: { Navbar, Hero, About, Portofolio }
+      components: { Navbar, Hero, About, Portofolio, Contact }
   })
 </script>
 
@@ -16,6 +17,7 @@
   <Hero />
   <About />
   <Portofolio />
+  <Contact />
 </template>
 
 
@@ -28,8 +30,13 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-
   .element::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
+  }
+  body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
   }
 </style>
