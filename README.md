@@ -1,1 +1,2 @@
-# personal-curriculum-vitae-using-vue-and-ts
+# Vue 3 + TypeScript + Vite
+
