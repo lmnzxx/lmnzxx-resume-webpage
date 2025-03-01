@@ -46,17 +46,17 @@
         {
             title: "Project 1",
             description: "Deskripsi singkat tentang project ini.",
-            image: "src/assets/porject1.png",
+            image: "./assets/porject1.png",
         },
         {
             title: "Project 2",
             description: "Deskripsi singkat tentang project ini.",
-            image: "src/assets/porject1.png",
+            image: "./assets/porject1.png",
         },
         {
             title: "Project 3",
             description: "Deskripsi singkat tentang project ini.",
-            image: "src/assets/porject1.png",
+            image: "./assets/porject1.png",
         },
     ]);
 </script>
