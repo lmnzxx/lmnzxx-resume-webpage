@@ -29,6 +29,7 @@
     import "../../node_modules/swiper/swiper-bundle.css";
     import "../../node_modules/swiper/modules/pagination.css"
     import "../../node_modules/swiper/modules/navigation.css"
+    import project1 from "@/assets/porject1.png";
     import { ref } from "vue";
 
     // ✅ Pakai modules
@@ -46,17 +47,17 @@
         {
             title: "Project 1",
             description: "Deskripsi singkat tentang project ini.",
-            image: "./assets/porject1.png",
+            image: project1,
         },
         {
             title: "Project 2",
             description: "Deskripsi singkat tentang project ini.",
-            image: "./assets/porject1.png",
+            image: project1,
         },
         {
             title: "Project 3",
             description: "Deskripsi singkat tentang project ini.",
-            image: "./assets/porject1.png",
+            image: project1,
         },
     ]);
 </script>
