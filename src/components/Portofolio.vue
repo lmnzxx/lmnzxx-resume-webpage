@@ -63,22 +63,26 @@
 
 <style scoped>
     .portofolio-section {
+        min-height: 100vh;
         text-align: center;
         padding: 64px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .section-title {
         font-size: 2rem;
         font-family: "Helvetica-Regular", Helvetica;
         font-weight: 600;
-        margin-top: 0;
-        padding: 20px;
+        margin: 0;
+        padding-bottom: 50px;
     }
 
     .portofolio-swiper {
         max-width: 1200px;
         width: 100%;
-        margin: auto;
+        margin: 0 auto;
     }
 
     .card {

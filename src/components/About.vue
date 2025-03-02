@@ -1,8 +1,8 @@
 <template>
-        <div class="about" id="about">
+        <section class="about" id="about">
             <div class="container">
                 <div class="wrapabout">
-                    <div class="tittle">ABOUT ME</div>
+                    <h2 class="tittle">ABOUT ME</h2>
                     <div class="content-wrapper">
                         <div class="left-content">
                             <p class="sub-tittle">Welcome to My World of Innovation in Tech and Networking</p>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 </template>
 
 <style scoped>
@@ -48,9 +48,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 80vh;
+        min-height: 100vh;
         background-color: #ffffff;
-        padding: 40px 20px;
+        padding: 40px 0;
     }
     .container {
         max-width: 1200px;

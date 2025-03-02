@@ -1,5 +1,5 @@
 <template>
-    <div class="home" :class="{ scrolled: isScrolled}" id="home">
+    <section class="home" :class="{ scrolled: isScrolled}" id="home">
         <div class="overlap-group-2">
             <div class="wrapper-content">
                 <img class="bubble1" src="../assets/vector.svg">
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script lang="ts">

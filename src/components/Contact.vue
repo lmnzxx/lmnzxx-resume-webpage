@@ -1,33 +1,49 @@
 <template>
-    <div class="contact-page">
-        <div class="contact-container">
-            <h2>Contact Us</h2>
-            <form @submit.prevent="submitForm">
-                <div class="form-group">
-                    <label for="name">Nama</label>
-                    <input v-model="formData.name" type="text" id="name" required />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input v-model="formData.email" type="email" id="email" required />
-                </div>
-                <div class="form-group">
-                    <label for="message">Pesan</label>
-                    <textarea v-model="formData.message" id="message" rows="5" required></textarea>
-                </div>
-                <button type="submit">Kirim</button>
-            </form>
+    <section id="contact" class="contact">
+        <div class="tittle-container">
+            <h1 class="tittle">Contact Us</h1>
+            <h2 class="sub-tittle">Let's start a conversation!</h2>
         </div>
-    </div>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form @submit.prevent="submitForm">
+                    <div class="form-group">
+                        <div class="input-container">
+                            <input v-model="formData.name" type="text" id="name" placeholder=" " required />
+                            <label for="name">Name</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-container">
+                            <input v-model="formData.email" type="email" id="email" placeholder=" " required />
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-container">
+                            <textarea v-model="formData.message" id="message" placeholder=" " required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div v-if="showAlert" class="alert-container">
+            <div class="alert-box">
+                <p>{{ alertMessage }}</p>
+                <button @click="showAlert = false">OK</button>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 
-// Ganti dengan URL action Google Form lo
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSe2_Zfd7jRFGUa-AWpn9yRfcv6YBcaXzuRGjJ43KtgJkvugGg/formResponse";
 
-// Mapping field dari Google Form
 const FORM_FIELDS = {
     name: "entry.1996200878",
     email: "entry.1451063446",
@@ -40,7 +56,9 @@ const formData = ref({
     message: "",
 });
 
-// Fungsi submit form
+const showAlert = ref(false);
+const alertMessage = ref("");
+
 const submitForm = async () => {
     const formDataEncoded = new URLSearchParams();
     formDataEncoded.append(FORM_FIELDS.name, formData.value.name);
@@ -53,75 +71,179 @@ const submitForm = async () => {
             mode: "no-cors",
             body: formDataEncoded,
         });
-        alert("Pesan berhasil dikirim!");
-        formData.value = { name: "", email: "", message: "" }; // Reset form
+        alertMessage.value = "Message sent! We'll get back to you soon.";
+        showAlert.value = true;
+        formData.value = { name: "", email: "", message: "" };
     } catch (error) {
-        alert("Gagal mengirim pesan!");
+        alertMessage.value = "Oh no! We couldn't send your message. Try again?";
+        showAlert.value = true;
     }
 };
 </script>
 
 <style scoped>
-.contact-page {
+.contact {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
+    font-family: "Helvetica-Regular", Helvetica;
+    gap: 50px;
 }
 
 .contact-container {
     width: 100%;
     max-width: 1200px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 120px;
 }
 
-h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.tittle-container {
+    margin-top: 50px;
+}
+
+.tittle {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.sub-tittle {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 25px;
+    color: #666;
 }
 
 .form-group {
-    margin-bottom: 15px;
-    text-align: left;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input,
-textarea {
+.input-container {
+    position: relative;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+}
+
+.input-container input,
+.input-container textarea {
+    max-width: 1200px;
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     font-size: 16px;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-container label {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    background: white;
+    padding: 0 5px;
+    font-size: 16px;
+    color: #aaa;
+    transition: all 0.3s ease;
+}
+
+.input-container input:focus,
+.input-container textarea:focus {
+    border-color: #007bff;
+    background: white;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.input-container input:focus + label,
+.input-container textarea:focus + label,
+.input-container input:not(:placeholder-shown) + label,
+.input-container textarea:not(:placeholder-shown) + label {
+    top: 0;
+    font-size: 12px;
+    color: #007bff;
 }
 
 textarea {
-    resize: none;
+    resize: vertical;
+    height: 100px;
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 12px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    border-radius: 6px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+    transform: scale(1.02);
 }
+
+.alert-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 300px;
+}
+
+.alert-box p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.alert-box button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.alert-box button:hover {
+    background: #0056b3;
+}
+
 </style>

@@ -76,13 +76,13 @@ export default defineComponent({
         box-shadow: 0px 4px 4px #00000040;
         backdrop-filter: blur(10px) brightness(100%);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 15px; /* Adjust padding on scroll */
+        padding: 15px; 
     }
 
     .navbar-content {
         display: flex;
-        width: 100%; /* Make it responsive */
-        max-width: 1200px; /* Limit width on large screens */
+        width: 100%; 
+        max-width: 1200px; 
         align-items: center;
         justify-content: space-between;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -107,18 +107,18 @@ export default defineComponent({
     }
 
     .navigation-list li {
-        margin: 0 2em; /* Use relative units for spacing */
+        margin: 0 2em; 
     }
 
     .navigation-list .contact {
-        margin: 0 0 0 2em; /* Use relative units for spacing */
+        margin: 0 0 0 2em; 
     }
 
     .navigation-list li a {
         font-family: "Helvetica-Regular", Helvetica;
         font-weight: 400;
         color: #000000;
-        font-size: 1.2em; /* Use relative units */
+        font-size: 1.2em; 
         white-space: nowrap;
         text-decoration: none;
     }
@@ -152,9 +152,8 @@ export default defineComponent({
         transform: rotate(-45deg) translate(5px, -5px);
     }
 
-
-    /* Media Queries */
-    @media (max-width: 768px) { /* Example tablet breakpoint */
+    /* Responsive */
+    @media (max-width: 768px) { 
     .navbar {
         padding: 10px;
     }
@@ -166,20 +165,20 @@ export default defineComponent({
         z-index: 100;
     }
     .navbar-content {
-        flex-direction: row; /* Stack vertically on smaller screens */
+        flex-direction: row;
         justify-content: space-between;
-        align-items: center; /* Align to the left */
+        align-items: center; 
         padding: 10px;
         box-sizing: border-box;
     }
     .navigation-list {
-        display: none; /* Hide the list by default */
+        display: none; 
         flex-direction: column;
         position: absolute;
-        top: 0; /* Position below the navbar */
+        top: 0; 
         left: 0;
         width: 100%;
-        background-color: #ffffff66; /* Match navbar background */
+        background-color: #ffffff66; 
         box-shadow: 0px 4px 4px #00000040;
         text-align: center;
         padding: 10px 0;
@@ -187,7 +186,7 @@ export default defineComponent({
         -webkit-backdrop-filter: blur(10px) brightness(100%);
     }
     .navigation-list.open {
-        display: flex; /* Show the list when open */
+        display: flex; 
         margin-top: 0;
     }
     .navigation-list.open ~ .tittle-navbar { 
@@ -204,11 +203,11 @@ export default defineComponent({
         transition: opacity 0.3s ease-in-out;
     }
     .navigation-list li a {
-        font-size: 1.2em; /* Smaller link font */
+        font-size: 1.2em; 
     }
     }
 
-    @media (max-width: 480px) { /* Example mobile breakpoint */
+    @media (max-width: 480px) { 
         .tittle-navbar {
             font-size: 1.2em;
         }
