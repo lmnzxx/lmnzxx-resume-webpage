@@ -155,6 +155,8 @@ export default defineComponent({
     /* Responsive */
     @media (max-width: 768px) { 
     .navbar {
+        max-width: 768px;
+        width: 100vw;
         padding: 10px;
     }
     .hamburger-menu {
@@ -208,6 +210,10 @@ export default defineComponent({
     }
 
     @media (max-width: 480px) { 
+        .navbar {
+            max-width: 480px;
+            width: 100vw;
+        }
         .tittle-navbar {
             font-size: 1.2em;
         }

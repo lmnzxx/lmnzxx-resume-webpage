@@ -66,18 +66,23 @@ export default defineComponent({
 }
 
 .footer-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Bagian Atas */
 .footer-top {
+    max-width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: start;
     padding: 10px 0;
     color: #ffffff;
     text-align: left;
+    gap: 200px;
 }
 
 .footer-left h3 {
@@ -129,6 +134,8 @@ export default defineComponent({
 /* Bagian Tengah */
 .footer-middle {
     margin: 15px 0;
+    max-width: 800px;
+    width: 100%;
 }
 
 .social-icons {
