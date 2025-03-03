@@ -5,10 +5,11 @@
   import About from './components/About.vue';
   import Portofolio from './components/Portofolio.vue';
   import Contact from './components/Contact.vue';
+  import Footer from './components/Footer.vue';
 
   defineComponent({
       name: 'App',
-      components: { Navbar, Hero, About, Portofolio, Contact }
+      components: { Navbar, Hero, About, Portofolio, Contact, Footer }
   })
 </script>
 
@@ -18,6 +19,7 @@
   <About />
   <Portofolio />
   <Contact />
+  <Footer />
 </template>
 
 
@@ -27,11 +29,11 @@
     scroll-behavior: smooth;
   }
   .element {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
   }
   .element::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+    display: none;
   }
   body {
     margin-left: 0px;

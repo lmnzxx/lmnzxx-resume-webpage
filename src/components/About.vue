@@ -25,13 +25,13 @@
                                     these fields, feel free to reach out.😬
                                 </p>
                                 <div class="group-link">
-                                    <a href="https://www.instagram.com/lmnzxx/">
+                                    <a href="https://www.instagram.com/lmnzxx">
                                         <img class="element-instagram" src="../assets/38-instagram-2-512-1.png">
                                     </a>
                                     <a href="https://github.com/lmnzxx">
                                         <img class="icon-social-github" src="../assets/icon-social-github-256-1.png" />
                                     </a>
-                                    <a href="https://www.linkedin.com/in/heryandi-pradana-9b3035196/">
+                                    <a href="https://www.linkedin.com/in/heryandi-pradana-9b3035196">
                                         <img class="element-linkedin" src="../assets/11-linkedin-256-1.png" />
                                     </a>
                                 </div>
