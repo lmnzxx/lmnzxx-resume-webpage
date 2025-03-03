@@ -1,8 +1,8 @@
 <template>
     <div class="navbar" :class="{ scrolled: isScrolled }">
-        <div class="navbar-content" :class="{ scrolled: isScrolled }">
+        <div class="navbar-content">
             <a class="tittle-navbar" href="#home" @click.prevent="scrollTo('home')">lmnzxx</a>
-            <div class="hamburger-menu" @click="toggleMenu">
+            <div class="hamburger-menu" :class="{ open: isMenuOpen }" @click="toggleMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -17,39 +17,37 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+<script lang="ts" setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 
-export default defineComponent({
-    setup() {
-        const isScrolled = ref(false);
-        const isMenuOpen = ref(false);
+const isScrolled = ref<boolean>(false);
+const isMenuOpen = ref<boolean>(false);
 
-        const handleScroll = () => {
-            isScrolled.value = window.scrollY > 50;
-        };
+const handleScroll = (): void => {
+    isScrolled.value = window.scrollY > 50;
+};
 
-        const toggleMenu = () => {
-            isMenuOpen.value = !isMenuOpen.value;
-        };
+const toggleMenu = (): void => {
+    isMenuOpen.value = !isMenuOpen.value;
+};
 
-        const scrollTo = (sectionId: string) => {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        };
 
-        onMounted(() => {
-            window.addEventListener('scroll', handleScroll);
+const scrollTo = (id: string): void => {
+    const element = document.getElementById(id);
+    if (element) {
+        window.scrollTo({
+            top: element.offsetTop - 50,
+            behavior: "smooth"
         });
+    }
+};
 
-        onUnmounted(() => {
-            window.removeEventListener('scroll', handleScroll);
-        });
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+});
 
-        return { isScrolled, isMenuOpen, toggleMenu, scrollTo };
-    },
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
@@ -71,7 +69,7 @@ export default defineComponent({
         padding: 30px;
     }
 
-    .navbar.scrolled {
+    .scrolled {
         background-color: #ffffff66;
         box-shadow: 0px 4px 4px #00000040;
         backdrop-filter: blur(10px) brightness(100%);
@@ -101,7 +99,7 @@ export default defineComponent({
     }
 
     .navigation-list {
-        list-style-type: none;
+        list-style: none;
         display: flex;
         margin-left: auto;
     }
@@ -134,7 +132,7 @@ export default defineComponent({
     }
 
     .hamburger-menu span {
-        width: 30px;
+        width: 25px;
         height: 3px;
         background-color: #000;
         margin: 2px 0;
@@ -161,7 +159,6 @@ export default defineComponent({
     }
     .hamburger-menu {
         display: flex;
-        margin-left: auto;
     }
     .tittle-navbar {
         z-index: 100;
@@ -177,7 +174,7 @@ export default defineComponent({
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 0; 
+        top: 60px; 
         left: 0;
         width: 100%;
         background-color: #ffffff66; 
@@ -189,7 +186,6 @@ export default defineComponent({
     }
     .navigation-list.open {
         display: flex; 
-        margin-top: 0;
     }
     .navigation-list.open ~ .tittle-navbar { 
         opacity: 0;
@@ -210,10 +206,6 @@ export default defineComponent({
     }
 
     @media (max-width: 480px) { 
-        .navbar {
-            max-width: 480px;
-            width: 100vw;
-        }
         .tittle-navbar {
             font-size: 1.2em;
         }
