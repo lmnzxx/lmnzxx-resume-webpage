@@ -214,6 +214,7 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 101;
 }
 
 .alert-box {
@@ -229,6 +230,7 @@ button:hover {
     font-size: 16px;
     color: #333;
     margin-bottom: 15px;
+    margin-top: 0;
 }
 
 .alert-box button {
