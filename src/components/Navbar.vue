@@ -18,37 +18,37 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+    import { ref, onMounted, onUnmounted } from 'vue';
 
-const isScrolled = ref<boolean>(false);
-const isMenuOpen = ref<boolean>(false);
+    const isScrolled = ref<boolean>(false);
+    const isMenuOpen = ref<boolean>(false);
 
-const handleScroll = (): void => {
-    isScrolled.value = window.scrollY > 50;
-};
+    const handleScroll = (): void => {
+        isScrolled.value = window.scrollY > 50;
+    };
 
-const toggleMenu = (): void => {
-    isMenuOpen.value = !isMenuOpen.value;
-};
+    const toggleMenu = (): void => {
+        isMenuOpen.value = !isMenuOpen.value;
+    };
 
 
-const scrollTo = (id: string): void => {
-    const element = document.getElementById(id);
-    if (element) {
-        window.scrollTo({
-            top: element.offsetTop - 50,
-            behavior: "smooth"
-        });
-    }
-};
+    const scrollTo = (id: string): void => {
+        const element = document.getElementById(id);
+        if (element) {
+            window.scrollTo({
+                top: element.offsetTop - 50,
+                behavior: "smooth"
+            });
+        }
+    };
 
-onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-});
+    onMounted(() => {
+        window.addEventListener('scroll', handleScroll);
+    });
 
-onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-});
+    onUnmounted(() => {
+        window.removeEventListener('scroll', handleScroll);
+    });
 </script>
 
 <style scoped>

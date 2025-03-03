@@ -1,5 +1,5 @@
 <template>
-    <section class="home" :class="{ scrolled: isScrolled}" id="home">
+    <section class="home" id="home">
         <div class="overlap-group-2">
             <div class="wrapper-content">
                 <img class="bubble1" src="../assets/vector.svg">
@@ -13,27 +13,19 @@
     </section>
 </template>
 
-<script lang="ts">
-    import { defineComponent, ref, onMounted, onUnmounted } from "vue";
 
-    export default defineComponent({
-        setup() {
-            const isScrolled = ref(false);
+<script lang="ts" setup>
+    import { ref, onMounted } from "vue";
 
-            const handleScroll = () => {
-                isScrolled.value = window.scrollY > 50;
-            };
-            onMounted(() => {
-                window.addEventListener('scroll', handleScroll);
-            });
+    const isScrolled = ref<boolean>(false);
 
-            onUnmounted(() => {
-                window.removeEventListener('scroll', handleScroll);
-            });
+    const handleScroll = (): void => {
+        isScrolled.value = window.scrollY > 50;
+    };
 
-            return { isScrolled };
-        }
-    })
+    onMounted(() => {
+        window.addEventListener("scroll", handleScroll);
+    });
 </script>
 
 <style scoped>
@@ -42,7 +34,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        height: 960px;
+        height: 100vh;
         width: 100%;
         padding: 0 20px;
         box-sizing: border-box;
@@ -62,24 +54,22 @@
     }
 
     .wrapper-content {
-        padding: 30px; /* Add padding here */
-        width: 100%; /* Important to fill parent */
-        box-sizing: border-box; /* Include padding in width calculation */
+        padding: 30px; 
+        width: 100%; 
+        box-sizing: border-box; 
         display: flex;
     }
 
     .bubble1 {
         position: absolute;
-        top: 0;
+        width: 60%;
         transform: translateY(-50%);
         right: 0;
-        max-width: 70%; /* Adjust as needed */
         height: auto;
     }
 
     .text-content {
         position: absolute;
-        top: -50%;
         transform: translateY(-50%);
         left: 0;
         z-index: 1;
@@ -111,22 +101,18 @@
     }
     /* Media Queries */
     @media (max-width: 768px) {
-        .overlap-group-2 {
-            flex-direction: column;
-            align-items: center;
+        .home {
+            max-width: 768px;
         }
         .bubble1 {
-            position: relative;
-            right: 0;
-            max-width: 80%;
-            margin-bottom: 20px;
+            width: 50%;
+            align-items: center !important;
         }
         .text-content {
             position: relative;
             top: auto;
             left: auto;
             transform: none;
-            text-align: center;
         }
     }
 </style>

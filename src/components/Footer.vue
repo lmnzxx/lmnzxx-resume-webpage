@@ -173,7 +173,7 @@ hr {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .footer-top {
         flex-direction: column;
         gap: 10px;
