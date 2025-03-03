@@ -13,9 +13,9 @@
                             <label for="name">Name</label>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" :class="{ 'invalid-group': !isEmailValid && formData.email }">
                         <div class="input-container">
-                            <input v-model="formData.email" type="email" id="email" placeholder=" " required />
+                            <input v-model="formData.email" type="email" id="email" placeholder=" " required @input="validateEmail"/>
                             <label for="email">Email</label>
                         </div>
                     </div>
@@ -41,6 +41,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+
+const isEmailValid = ref(true);
+
+const validateEmail = () => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    isEmailValid.value = emailPattern.test(formData.value.email);
+};
+
 
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSe2_Zfd7jRFGUa-AWpn9yRfcv6YBcaXzuRGjJ43KtgJkvugGg/formResponse";
 
@@ -149,7 +157,7 @@ const submitForm = async () => {
     border: 2px solid #ddd;
     border-radius: 6px;
     font-size: 16px;
-    background: #f9f9f9;
+    background: #f1f1f1;
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
@@ -158,7 +166,7 @@ const submitForm = async () => {
     position: absolute;
     top: 14px;
     left: 12px;
-    background: white;
+    background: #f1f1f1;
     padding: 0 5px;
     font-size: 16px;
     color: #aaa;
@@ -174,12 +182,36 @@ const submitForm = async () => {
 }
 
 .input-container input:focus + label,
-.input-container textarea:focus + label,
-.input-container input:not(:placeholder-shown) + label,
-.input-container textarea:not(:placeholder-shown) + label {
-    top: 0;
+.input-container textarea:focus + label {
+    top: -7px;
+    background-color: white;
     font-size: 12px;
     color: #007bff;
+}
+
+.input-container input:not(:placeholder-shown),
+.input-container textarea:not(:placeholder-shown) {
+    border-color: #007bff;
+    background: white;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.input-container input:not(:placeholder-shown) + label,
+.input-container textarea:not(:placeholder-shown) + label {
+    top: -7px;
+    background: white;
+    font-size: 12px;
+    color: #007bff;
+}
+
+.invalid-group .input-container input {
+    border-color: red !important;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+.invalid-group .input-container label {
+    color: red !important;
 }
 
 textarea {

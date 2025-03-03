@@ -75,7 +75,8 @@ export default defineComponent({
 
 /* Bagian Atas */
 .footer-top {
-    max-width: 80%;
+    max-width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: start;
@@ -83,6 +84,7 @@ export default defineComponent({
     color: #ffffff;
     text-align: left;
     gap: 200px;
+    margin-bottom: 50px;
 }
 
 .footer-left h3 {
@@ -142,7 +144,7 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .icon {
