@@ -1,2 +1,2 @@
-# Vue 3 + TypeScript + Vite
+# Personal Curriculum Vitae using Vue 3 + TypeScript + Vite
 
