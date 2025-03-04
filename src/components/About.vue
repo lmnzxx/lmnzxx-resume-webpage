@@ -147,4 +147,15 @@
         left: 98px;
         object-fit: cover;
     }
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+        .left-content {
+            order: 1; 
+        }
+        .right-content {
+            order: 2; 
+        }
+    }
 </style>

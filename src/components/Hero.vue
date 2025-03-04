@@ -168,5 +168,25 @@
             font-size: 1.4em;
         }
     }
+    @media (max-width: 420px) {
+        .home {
+            max-width: 420px;
+        }
+        .bubble1 {
+            width: 125%;
+            transform: translateY(-25%);
+            right: -25%;
+        }
+        .hello {
+            font-size: 1.5em;
+        }
+        .names {
+            font-size: 3.5em;
+            white-space: normal;
+        }
+        .aka {
+            font-size: 1.2em;
+        }
+    }
 </style>
 
