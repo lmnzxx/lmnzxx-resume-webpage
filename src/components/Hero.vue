@@ -103,16 +103,69 @@
     @media (max-width: 768px) {
         .home {
             max-width: 768px;
+            overflow-x: hidden;
         }
         .bubble1 {
-            width: 50%;
-            align-items: center !important;
+            width: 100%;
+            transform: translateY(-40%);
+            right: -25%;
         }
         .text-content {
             position: relative;
             top: auto;
             left: auto;
             transform: none;
+        }
+        .wrapper-content {
+            max-width: 720px;
+        }
+        .hello {
+            font-size: 1.8em;
+        }
+        .names {
+            font-size: 4.5em;
+        }
+        .aka {
+            font-size: 1.5em;
+        }
+    }
+    @media (max-width: 720px) {
+        .home {
+            max-width: 720px;
+        }
+        .bubble1 {
+            width: 100%;
+            transform: translateY(-40%);
+            right: -25%;
+        }
+        .hello {
+            font-size: 1.7em;
+        }
+        .names {
+            font-size: 4em;
+        }
+        .aka {
+            font-size: 1.5em;
+        }
+    }
+    @media (max-width: 640px) {
+        .home {
+            max-width: 640px;
+        }
+        .bubble1 {
+            width: 125%;
+            transform: translateY(-25%);
+            right: -25%;
+        }
+        .hello {
+            font-size: 1.7em;
+        }
+        .names {
+            font-size: 4.5em;
+            white-space: normal;
+        }
+        .aka {
+            font-size: 1.4em;
         }
     }
 </style>
