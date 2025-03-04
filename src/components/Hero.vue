@@ -154,7 +154,7 @@
         }
         .bubble1 {
             width: 125%;
-            transform: translateY(-25%);
+            transform: translateY(-30%);
             right: -25%;
         }
         .hello {
@@ -173,9 +173,9 @@
             max-width: 420px;
         }
         .bubble1 {
-            width: 125%;
-            transform: translateY(-25%);
-            right: -25%;
+            width: 175%;
+            transform: translateY(-40%);
+            right: -60%;
         }
         .hello {
             font-size: 1.5em;
