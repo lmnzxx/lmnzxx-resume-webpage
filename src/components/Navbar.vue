@@ -31,7 +31,6 @@
         isMenuOpen.value = !isMenuOpen.value;
     };
 
-
     const scrollTo = (id: string): void => {
         const element = document.getElementById(id);
         if (element) {
@@ -44,7 +43,17 @@
 
     onMounted(() => {
         window.addEventListener('scroll', handleScroll);
+        function setViewportHeight() {
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        }
+        
+        setViewportHeight(); // Set awal
+        window.addEventListener("resize", setViewportHeight); // Update tiap resize
+
+        return () => window.removeEventListener("resize", setViewportHeight);
     });
+
+    
 
     onUnmounted(() => {
         window.removeEventListener('scroll', handleScroll);
@@ -52,13 +61,16 @@
 </script>
 
 <style scoped>
+    :root {
+        --vh: 1vh;
+    }
     a {
         text-decoration: none;
     }
     .navbar {
         background-color: transparent;
         position: fixed; 
-        top: 0;
+        top: env(safe-area-inset-top, 0);
         left: 0;
         width: 100vw;
         z-index: 99;
