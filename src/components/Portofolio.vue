@@ -70,7 +70,6 @@
 
 <style scoped>
     .portofolio-section {
-        max-height: 100vh;
         text-align: center;
         padding: 64px 0;
         display: flex;
