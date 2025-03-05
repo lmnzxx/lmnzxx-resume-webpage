@@ -5,8 +5,8 @@
             class="portofolio-swiper"
             :modules="modules"
             :slides-per-view="1"
-            :space-between="20"
-            :navigation="true"
+            :space-between="0"
+            :navigation="isDesktop"
             :pagination="{ clickable: true }"
             :autoplay="{ delay: 5000, disableOnInteraction: false }"
         >
@@ -24,24 +24,21 @@
 </template>
 
 <script setup lang="ts">
+    import { ref, onMounted, onUnmounted } from "vue";
     import { Swiper, SwiperSlide } from "swiper/vue";
     import { Navigation, Pagination, Autoplay } from "swiper/modules";
     import "../../node_modules/swiper/swiper-bundle.css";
     import "../../node_modules/swiper/modules/pagination.css"
     import "../../node_modules/swiper/modules/navigation.css"
-    import { ref } from "vue";
 
-    // ✅ Pakai modules
     const modules = [Navigation, Pagination, Autoplay];
 
-    // Definisi tipe data untuk project
     interface Project {
         title: string;
         description: string;
         image: string;
     }
 
-    // Pakai ref untuk projects agar reactive
     const projects = ref<Project[]>([
         {
             title: "Car Rental Booking Order Website",
@@ -59,6 +56,16 @@
             image: "/img/project1.png",
         },
     ]);
+
+
+    const isDesktop = ref(window.innerWidth >= 768);
+
+    const updateScreenSize = () => {
+        isDesktop.value = window.innerWidth >= 768;
+    };
+
+    onMounted(() => window.addEventListener("resize", updateScreenSize));
+    onUnmounted(() => window.removeEventListener("resize", updateScreenSize));
 </script>
 
 <style scoped>
@@ -81,13 +88,14 @@
 
     .portofolio-swiper {
         max-width: 1200px;
-        width: 100%;
+        width: 90%;
         margin: 0 auto;
+        overflow: hidden;
     }
 
     .card {
-        width: 1200px; 
-        max-width: 100%;
+        width: 100%; 
+        max-width: 1200px;
         height: 640px; 
         margin: auto; 
         background: #fff;
