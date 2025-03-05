@@ -27,6 +27,11 @@
   body {
     background-color: #f1f1f1;
     scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
   }
   .element {
     -ms-overflow-style: none; 
