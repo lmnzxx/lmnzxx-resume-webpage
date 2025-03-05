@@ -90,192 +90,198 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
-.contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    font-family: "Helvetica-Regular", Helvetica;
-    gap: 50px;
-}
+    .contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        font-family: "Helvetica-Regular", Helvetica;
+        gap: 50px;
+    }
 
-.contact-container {
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    margin-bottom: 120px;
-}
+    .contact-container {
+        width: 100%;
+        max-width: 1200px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        margin-bottom: 120px;
+    }
 
-.contact-form {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
+    .contact-form {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
 
-.tittle-container {
-    margin-top: 50px;
-}
+    .tittle-container {
+        margin-top: 50px;
+    }
 
-.tittle {
-    text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-}
+    .tittle {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
 
-.sub-tittle {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 25px;
-    color: #666;
-}
+    .sub-tittle {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 25px;
+        color: #666;
+    }
 
-.form-group {
-    margin-bottom: 20px;
-    position: relative;
-}
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
 
-.input-container {
-    position: relative;
-    width: 100%;
-}
+    .input-container {
+        position: relative;
+        width: 100%;
+    }
 
-.input-container input,
-.input-container textarea {
-    max-width: 1200px;
-    width: 100%;
-    padding: 14px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    background: #f1f1f1;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
+    .input-container input,
+    .input-container textarea {
+        max-width: 1200px;
+        width: 100%;
+        padding: 14px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        background: #f1f1f1;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
 
-.input-container label {
-    position: absolute;
-    top: 14px;
-    left: 12px;
-    background: #f1f1f1;
-    padding: 0 5px;
-    font-size: 16px;
-    color: #aaa;
-    transition: all 0.3s ease;
-}
+    .input-container label {
+        position: absolute;
+        top: 14px;
+        left: 12px;
+        background: #f1f1f1;
+        padding: 0 5px;
+        font-size: 16px;
+        color: #aaa;
+        transition: all 0.3s ease;
+    }
 
-.input-container input:focus,
-.input-container textarea:focus {
-    border-color: #007bff;
-    background: white;
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
-}
+    .input-container input:focus,
+    .input-container textarea:focus {
+        border-color: #007bff;
+        background: white;
+        outline: none;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    }
 
-.input-container input:focus + label,
-.input-container textarea:focus + label {
-    top: -7px;
-    background-color: white;
-    font-size: 12px;
-    color: #007bff;
-}
+    .input-container input:focus + label,
+    .input-container textarea:focus + label {
+        top: -7px;
+        background-color: white;
+        font-size: 12px;
+        color: #007bff;
+    }
 
-.input-container input:not(:placeholder-shown),
-.input-container textarea:not(:placeholder-shown) {
-    border-color: #007bff;
-    background: white;
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
-}
+    .input-container input:not(:placeholder-shown),
+    .input-container textarea:not(:placeholder-shown) {
+        border-color: #007bff;
+        background: white;
+        outline: none;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    }
 
-.input-container input:not(:placeholder-shown) + label,
-.input-container textarea:not(:placeholder-shown) + label {
-    top: -7px;
-    background: white;
-    font-size: 12px;
-    color: #007bff;
-}
+    .input-container input:not(:placeholder-shown) + label,
+    .input-container textarea:not(:placeholder-shown) + label {
+        top: -7px;
+        background: white;
+        font-size: 12px;
+        color: #007bff;
+    }
 
-.invalid-group .input-container input {
-    border-color: red !important;
-    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
-}
+    .invalid-group .input-container input {
+        border-color: red !important;
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+    }
 
-.invalid-group .input-container label {
-    color: red !important;
-}
+    .invalid-group .input-container label {
+        color: red !important;
+    }
 
-textarea {
-    resize: vertical;
-    height: 100px;
-}
+    textarea {
+        resize: vertical;
+        height: 100px;
+    }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
+    button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
 
-button:hover {
-    background: linear-gradient(135deg, #0056b3, #003f7f);
-    transform: scale(1.02);
-}
+    button:hover {
+        background: linear-gradient(135deg, #0056b3, #003f7f);
+        transform: scale(1.02);
+    }
 
-.alert-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 101;
-}
+    .alert-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 101;
+    }
 
-.alert-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    min-width: 300px;
-}
+    .alert-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        min-width: 300px;
+    }
 
-.alert-box p {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 15px;
-    margin-top: 0;
-}
+    .alert-box p {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 15px;
+        margin-top: 0;
+    }
 
-.alert-box button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
-}
+    .alert-box button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+    }
 
-.alert-box button:hover {
-    background: #0056b3;
-}
+    .alert-box button:hover {
+        background: #0056b3;
+    }
+
+    @media (max-width: 1320px) {
+        .contact-container {
+            width: 90%;
+        }
+    }
 </style>
