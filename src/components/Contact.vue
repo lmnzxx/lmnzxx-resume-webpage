@@ -124,7 +124,7 @@ const submitForm = async () => {
 
     .tittle {
         text-align: center;
-        font-size: 32px;
+        font-size: 2rem;
         font-weight: bold;
         margin-bottom: 10px;
         color: #333;
@@ -132,7 +132,7 @@ const submitForm = async () => {
 
     .sub-tittle {
         text-align: center;
-        font-size: 18px;
+        font-size: 1.3rem;
         font-weight: 400;
         margin-bottom: 25px;
         color: #666;
@@ -282,6 +282,16 @@ const submitForm = async () => {
     @media (max-width: 1320px) {
         .contact-container {
             width: 90%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .tittle {
+            font-size: 1.5rem;
+        }
+
+        .sub-tittle {
+            font-size: 1rem;
         }
     }
 </style>

@@ -9,7 +9,8 @@
             :navigation="isDesktop"
             :pagination="{ clickable: true }"
             :autoplay="{ delay: 5000, disableOnInteraction: false }"
-        >
+            :auatoheight="true"
+            >
             <swiper-slide v-for="(item, index) in projects" :key="index">
                 <div class="card">
                     <img :src="item.image" :alt="item.title" class="card-img" />
@@ -24,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, onMounted, onUnmounted } from "vue";
+    import { ref, onMounted, onUnmounted, nextTick } from "vue";
     import { Swiper, SwiperSlide } from "swiper/vue";
     import { Navigation, Pagination, Autoplay } from "swiper/modules";
     import "../../node_modules/swiper/swiper-bundle.css";
@@ -47,25 +48,88 @@
         },
         {
             title: "Project 2",
-            description: "Deskripsi singkat tentang project ini.",
+            description: "A web-based car rental booking system built with PHP. It allows customers to search, book, and manage car rentals online while helping rental owners manage vehicle data and transactions efficiently.",
             image: "/img/project1.png",
         },
         {
             title: "Project 3",
-            description: "Deskripsi singkat tentang project ini.",
+            description: "A web-based car rental booking system built with PHP. It allows customers to search, book, and manage car rentals online while helping rental owners manage vehicle data and transactions efficiently.",
             image: "/img/project1.png",
         },
     ]);
 
-
     const isDesktop = ref(window.innerWidth >= 768);
+    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
 
-    const updateScreenSize = () => {
-        isDesktop.value = window.innerWidth >= 768;
+        const equalizeSlideHeight = () => {
+        nextTick(() => {
+            const slides = document.querySelectorAll(".swiper-slide .card");
+            const cardContents = document.querySelectorAll(".card-content");
+            const images = document.querySelectorAll(".card-img");
+            let imagesLoaded = 0;
+
+            const updateHeight = () => {
+                let maxCardHeight = 0;
+                let maxContentHeight = 0;
+
+                slides.forEach((slide) => {
+                    (slide as HTMLElement).style.height = "auto";
+                });
+                cardContents.forEach((content) => {
+                    (content as HTMLElement).style.height = "auto";
+                });
+
+                slides.forEach((slide) => {
+                    maxCardHeight = Math.max(maxCardHeight, slide.scrollHeight);
+                });
+                cardContents.forEach((content) => {
+                    maxContentHeight = Math.max(maxContentHeight, content.scrollHeight);
+                });
+
+                slides.forEach((slide) => {
+                    (slide as HTMLElement).style.height = `${maxCardHeight}px`;
+                });
+                cardContents.forEach((content) => {
+                    (content as HTMLElement).style.height = `${maxContentHeight}px`;
+                });
+            };
+
+            images.forEach((img) => {
+                if ((img as HTMLImageElement).complete) {
+                    imagesLoaded++;
+                } else {
+                    img.addEventListener("load", () => {
+                        imagesLoaded++;
+                        if (imagesLoaded === images.length) {
+                            updateHeight();
+                        }
+                    });
+                }
+            });
+
+            if (imagesLoaded === images.length) {
+                updateHeight();
+            }
+        });
     };
 
-    onMounted(() => window.addEventListener("resize", updateScreenSize));
-    onUnmounted(() => window.removeEventListener("resize", updateScreenSize));
+    const handleResize = () => {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            isDesktop.value = window.innerWidth >= 768;
+            equalizeSlideHeight();
+        }, 200);
+    };
+
+    onMounted(() => {
+        window.addEventListener("resize", handleResize);
+        equalizeSlideHeight();
+    });
+
+    onUnmounted(() => {
+        window.removeEventListener("resize", handleResize);
+    });
+
 </script>
 
 <style scoped>
@@ -90,16 +154,18 @@
         width: 90%;
         margin: 0 auto;
         overflow: hidden;
+        min-height: 300px;
     }
 
     .card {
         width: 100%; 
         max-width: 1200px;
-        height: 640px; 
-        margin: auto; 
         background: #fff;
         overflow: hidden;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
     }
 
     .card-img {
@@ -111,6 +177,7 @@
 
     .card-content {
         padding: 20px;
+        flex-grow: 1;
     }
 
     .card-content h3 {
@@ -124,5 +191,17 @@
         color: #555;
         font-family: "Helvetica-Regular", Helvetica;
         font-weight: 400;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    @media screen and (max-width: 768px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
     }
 </style>

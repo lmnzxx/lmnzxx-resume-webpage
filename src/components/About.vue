@@ -64,7 +64,7 @@
         text-align: left;
     }
     .tittle {
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: bold;
         color: #000;
         margin-bottom: 10px;
