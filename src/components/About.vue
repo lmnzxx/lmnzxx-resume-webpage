@@ -157,4 +157,18 @@
             order: 2; 
         }
     }
+    @media (max-width: 480px) {
+        .sub-tittle {
+            font-size: 1.7rem;
+        }
+        .intro {
+            font-size: 1rem;
+        }
+        .get-to-know {
+            font-size: 1.5rem;
+        }
+        .get-to-know-sub {
+            font-size: 1rem;
+        }
+    }
 </style>
