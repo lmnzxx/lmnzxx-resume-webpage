@@ -1,7 +1,7 @@
 <template>
     <div class="navbar" :class="{ scrolled: isScrolled }" :style="navbarStyle">
         <div class="navbar-content">
-            <a class="tittle-navbar" href="#home" @click.prevent="scrollTo('home')">lmnzxx</a>
+            <a class="tittle-navbar" :class="{ active: isMenuOpen }" href="#home" @click.prevent="scrollTo('home')">lmnzxx</a>
             <div class="hamburger-menu" :class="{ open: isMenuOpen }" @click="toggleMenu">
                 <span></span>
                 <span></span>
@@ -184,6 +184,9 @@
             display: flex;
         }
         .tittle-navbar {
+            z-index: 103;
+        }
+        .tittle-navbar.active {
             z-index: 100;
         }
         .navbar-content {
