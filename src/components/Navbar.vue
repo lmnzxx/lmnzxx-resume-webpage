@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar" :class="{ scrolled: isScrolled }">
+    <div class="navbar" :class="{ scrolled: isScrolled }" :style="navbarStyle">
         <div class="navbar-content">
             <a class="tittle-navbar" href="#home" @click.prevent="scrollTo('home')">lmnzxx</a>
             <div class="hamburger-menu" :class="{ open: isMenuOpen }" @click="toggleMenu">
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { ref, onMounted, onUnmounted } from 'vue';
+    import { ref, onMounted, onUnmounted, computed } from 'vue';
 
     const isScrolled = ref<boolean>(false);
     const isMenuOpen = ref<boolean>(false);
@@ -46,6 +46,16 @@
     const closeMenu = (): void => {
         isMenuOpen.value = false;
     };
+
+    const navbarStyle = computed(() => {
+        if (isScrolled.value && isMenuOpen.value) {
+            return { backdropFilter: "none" }; 
+        } else if (isScrolled.value && !isMenuOpen.value) {
+            return { backdropFilter: "blur(10px)" };
+        } else {
+            return {}; 
+        }
+    });
 
     onMounted(() => {
         window.addEventListener('scroll', handleScroll);
@@ -88,7 +98,6 @@
     .scrolled {
         background-color: #ffffff66;
         box-shadow: 0px 4px 4px #00000040;
-        backdrop-filter: blur(10px) brightness(100%);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 15px; 
     }
@@ -207,16 +216,14 @@
             display: flex;
             transition: opacity 0.5s ease-in-out;
             opacity: 0;
-            position: absolute;
             top: 0;
-            right: 0;
-            margin: 0;
-            padding: 0;
+            left: 0;
             width: 100vw;
             height: 100vh;
             background: rgba(255, 255, 255, 0.2); 
             backdrop-filter: blur(10px); 
             z-index: 100;
+            position: fixed;
         }
         .navigation-list.active {
             transform: translateX(0);
