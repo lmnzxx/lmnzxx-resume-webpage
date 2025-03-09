@@ -2,8 +2,8 @@
     <section class="home" id="home">
         <div class="overlap-group-2">
             <div class="wrapper-content">
-                <img class="bubble1" src="../assets/vector.svg">
-                <div class="text-content">
+                <img class="bubble1" src="../assets/vector.svg" v-motion="animationProps1"/>
+                <div class="text-content" v-motion="animationProps2">
                     <div class="hello">Hello there, I am</div>
                     <div class="names">Heryandi Pradana</div>
                     <div class="aka">also known as lmnzxx</div>
@@ -15,7 +15,34 @@
 
 
 <script lang="ts" setup>
-    import { ref, onMounted } from "vue";
+    import { ref, onMounted, computed } from "vue";
+    import { useWindowSize } from "@vueuse/core";
+
+    const { width } = useWindowSize(); // Ambil ukuran layar
+
+    const animationProps1 = computed(() => {
+        if (width.value < 480) {
+            return { initial: { x: 100, y: '-20vh', opacity: 0 }, enter: { x: 0, y: '-20vh', opacity: 1, transition: { duration: 1000 } } };
+        } else if (width.value < 768) {
+            return { initial: { x: 200, y: '-25vh',  opacity: 0 }, enter: { x: 0, y: '-25vh', opacity: 1, transition: { duration: 1000 } } };
+        } else if (width.value < 1080) {
+            return { initial: { x: 200, y: '-25vh', opacity: 0 }, enter: { x: 0, y: '-25vh', opacity: 1, transition: { duration: 1000} } };
+        } else {
+            return { initial: { x: 200, y: '-35vh', opacity: 0 }, enter: { x: 0, y: '-35vh', opacity: 1, transition: { duration: 1000 } } };
+        }
+    });
+
+    const animationProps2 = computed(() => {
+        if (width.value < 480) {
+            return { initial: { x: -30, opacity: 0 }, enter: { x: 0, opacity: 1, transition: { duration: 1000 } } };
+        } else if (width.value < 768) {
+            return { initial: { x: -200, opacity: 0 }, enter: { x: 0, opacity: 1, transition: { duration: 1000 } } };
+        } else if (width.value < 1080) {
+            return { initial: { x: -200, y: '-10vh', opacity: 0 }, enter: { x: 0, y: '-10vh', opacity: 1, transition: { duration: 1000} } };
+        } else {
+            return { initial: { x: -200, y: '-10vh', opacity: 0 }, enter: { x: 0, y:'-10vh', opacity: 1, transition: { duration: 1000 } } };
+        }
+    });
 
     const isScrolled = ref<boolean>(false);
 
@@ -47,8 +74,8 @@
     }
 
     .overlap-group-2 {
-        position: relative;
-        width: 100%;
+        position: absolute;
+        width: 94%;
         max-width: 1200px;
         display: flex;
     }
@@ -63,14 +90,12 @@
     .bubble1 {
         position: absolute;
         width: 60%;
-        transform: translateY(-50%);
         right: 0;
         height: auto;
     }
 
     .text-content {
         position: absolute;
-        transform: translateY(-50%);
         left: 0;
         z-index: 1;
         text-decoration: none;
@@ -189,4 +214,3 @@
         }
     }
 </style>
-

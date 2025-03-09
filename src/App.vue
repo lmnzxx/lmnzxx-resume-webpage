@@ -29,14 +29,12 @@
   }
   html, body {
       scrollbar-width: none;
-      -ms-overflow-style: none;
   }
   body {
     background-color: #f1f1f1;
     scroll-behavior: smooth;
   }
   .element {
-    -ms-overflow-style: none; 
     scrollbar-width: none; 
   }
   .element::-webkit-scrollbar {
