@@ -7,12 +7,14 @@
                 <span></span>
                 <span></span>
             </div>
-            <ul class="navigation-list" :class="{ open: isMenuOpen }">
+            <ul :class="['navigation-list', { 'active': isMenuOpen }]">
                 <li><a href="#home" @click.prevent="scrollTo('home')">Home</a></li>
                 <li><a href="#about" @click.prevent="scrollTo('about')">About</a></li>
                 <li><a href="#portofolio" @click.prevent="scrollTo('portofolio')">Portofolio</a></li>
-                <li class="contact"><a href="#contact" @click.prevent="scrollTo('contact')">Contact</a></li>
+                <li><a href="#contact" @click.prevent="scrollTo('contact')">Contact</a></li>
             </ul>
+            <div class="navlist-bg" :class="{ 'active': isMenuOpen }" @click="closeMenu">
+            </div>
         </div>
     </div>
 </template>
@@ -40,6 +42,10 @@
             });
         }
     };
+    
+    const closeMenu = (): void => {
+        isMenuOpen.value = false;
+    };
 
     onMounted(() => {
         window.addEventListener('scroll', handleScroll);
@@ -47,13 +53,11 @@
             document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
         }
         
-        setViewportHeight(); // Set awal
-        window.addEventListener("resize", setViewportHeight); // Update tiap resize
+        setViewportHeight();
+        window.addEventListener("resize", setViewportHeight);
 
         return () => window.removeEventListener("resize", setViewportHeight);
     });
-
-    
 
     onUnmounted(() => {
         window.removeEventListener('scroll', handleScroll);
@@ -139,7 +143,7 @@
         justify-content: space-between;
         height: 20px;
         cursor: pointer;
-        z-index: 100;
+        z-index: 102;
         transition: transform 0.3s ease-in-out;
     }
 
@@ -153,73 +157,98 @@
     .hamburger-menu.open span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
-
     .hamburger-menu.open span:nth-child(2) {
         opacity: 0;
     }
-
     .hamburger-menu.open span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
     }
 
     /* Responsive */
     @media (max-width: 768px) { 
-    .navbar {
-        max-width: 768px;
-        width: 100vw;
-        padding: 10px;
-    }
-    .hamburger-menu {
-        display: flex;
-    }
-    .tittle-navbar {
-        z-index: 100;
-    }
-    .navbar-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center; 
-        padding: 10px;
-        box-sizing: border-box;
-    }
-    .navigation-list {
-        display: none; 
-        flex-direction: column;
-        position: absolute;
-        top: 60px; 
-        left: 0;
-        width: 100%;
-        background-color: #ffffff66; 
-        box-shadow: 0px 4px 4px #00000040;
-        text-align: center;
-        padding: 10px 0;
-        backdrop-filter: blur(10px) brightness(100%);
-        -webkit-backdrop-filter: blur(10px) brightness(100%);
-    }
-    .navigation-list.open {
-        display: flex; 
-    }
-    .navigation-list.open ~ .tittle-navbar { 
-        opacity: 0;
-    }
-    .navigation-list li {
-        margin: 1em 0;
-    }
-    .navigation-list .contact {
-        margin: 1em 0;
-    }
-    .tittle-navbar {
-        font-size: 2em; 
-        transition: opacity 0.3s ease-in-out;
-    }
-    .navigation-list li a {
-        font-size: 1.2em; 
-    }
+        .navbar {
+            max-width: 768px;
+            width: 100vw;
+            padding: 10px;
+        }
+        .hamburger-menu {
+            display: flex;
+        }
+        .tittle-navbar {
+            z-index: 100;
+        }
+        .navbar-content {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center; 
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .navigation-list {
+            list-style: none;
+            display: flex;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            transform: translateX(100%);
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            width: 42%;
+            height: 100vh;
+            background-color: #ffffff; 
+            text-align: left;
+            justify-content: center;
+            z-index: 101;
+        }
+        .navlist-bg {
+            list-style: none;
+            display: flex;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(10px); 
+            z-index: 100;
+        }
+        .navigation-list.active {
+            transform: translateX(0);
+            opacity: 1; 
+        }
+        .navlist-bg.active {
+            opacity: 1; 
+        }
+        .navigation-list.open ~ .tittle-navbar { 
+            opacity: 0;
+        }
+        .navigation-list li {
+            margin: 1em 3em;
+        }
+        .navigation-list .contact {
+            margin: 1em 0;
+        }
+        .tittle-navbar {
+            font-size: 2em; 
+            transition: opacity 0.3s ease-in-out;
+        }
+        .navigation-list li a {
+            font-size: 1.2em; 
+        }
     }
 
     @media (max-width: 480px) { 
         .tittle-navbar {
             font-size: 1.2em;
+        }
+        .navigation-list {
+            width: 69%;
         }
     }
 </style>
