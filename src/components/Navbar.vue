@@ -212,11 +212,10 @@
             background-color: #ffffff; 
             text-align: left;
             justify-content: center;
-            z-index: 101;
         }
         .navlist-bg {
             list-style: none;
-            display: flex;
+            display: none;
             transition: opacity 0.5s ease-in-out;
             opacity: 0;
             top: 0;
@@ -225,15 +224,17 @@
             height: 100vh;
             background: rgba(255, 255, 255, 0.2); 
             backdrop-filter: blur(10px); 
-            z-index: 100;
             position: fixed;
         }
         .navigation-list.active {
             transform: translateX(0);
-            opacity: 1; 
+            z-index: 101;
+            opacity: 1;
         }
         .navlist-bg.active {
+            display: flex;
             opacity: 1; 
+            z-index: 100;
         }
         .navigation-list.open ~ .tittle-navbar { 
             opacity: 0;
