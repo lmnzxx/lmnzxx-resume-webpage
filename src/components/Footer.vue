@@ -1,7 +1,6 @@
 <template>
     <footer class="footer">
         <div class="footer-container">
-            <!-- Bagian Atas -->
             <div class="footer-top">
                 <div class="footer-left">
                     <h3>lmnzxx</h3>
@@ -21,8 +20,6 @@
                     <a href="/resume.pdf" download>Download CV</a>
                 </div>
             </div>
-
-            <!-- Bagian Tengah -->
             <div class="footer-middle">
                 <div class="social-icons">
                     <a href="https://www.github.com/lmnzxx" class="icon"><i class="fab fa-github"></i></a>
@@ -32,8 +29,6 @@
                 </div>
                 <hr />
             </div>
-
-            <!-- Bagian Bawah -->
             <p>Made with ❤️ by lmnzxx using Vue + Vite + TS</p>
         </div>
     </footer>
