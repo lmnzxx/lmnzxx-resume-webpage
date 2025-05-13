@@ -17,7 +17,7 @@
                 </div>
                 <div class="footer-right">
                     <h4>Support Document</h4>
-                    <a href="/public/Resume.pdf" download>Download CV</a>
+                    <a href="/Resume.pdf" download>Download CV</a>
                 </div>
             </div>
             <div class="footer-middle">
