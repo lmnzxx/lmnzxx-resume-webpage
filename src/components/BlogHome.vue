@@ -6,10 +6,12 @@
                     <router-link
                         :to="`/blog/${post.slug}`"
                         class="blog-card-link"
-                        v-for="post in blogPosts"
+                        v-for="(post, index) in blogPosts"
                         :key="post.id"
                         >
-                        <div class="blog-card">
+                        <div class="blog-card animate-card"
+                        :style="{ animationDelay: `${index * 150}ms` }"
+                        >
                             <h3 class="blog-title">{{ post.title }}</h3>
                             <p class="blog-snippet">{{ post.excerpt.slice(0, 200) }}..</p>
                         </div>
@@ -21,7 +23,16 @@
 </template>
 
 <script lang="ts" setup>
-import { blogPosts } from '../data/blogPosts';
+    import { blogPosts as allPosts } from '../data/blogPosts';
+    import { onMounted, ref } from 'vue';
+
+    const blogPosts = ref<typeof allPosts>([]);
+
+    onMounted(() => {
+        setTimeout(() => {
+            blogPosts.value = allPosts;
+        }, 100);
+    });
 </script>
 
 <style scoped>
@@ -30,7 +41,7 @@ import { blogPosts } from '../data/blogPosts';
     min-height: 100vh;
     justify-content: center;
     align-items: flex-start;
-    background-color: #ffffff;
+    background-color: #f1f1f1;
     padding-top: 100px;
     font-family: "Helvetica-Regular", Helvetica;
 }
@@ -63,11 +74,11 @@ import { blogPosts } from '../data/blogPosts';
 }
 
 .blog-card {
-    border: 1px solid #dcdcdc;
+    border: 1px solid #d5d5d5;
     border-radius: 8px;
     padding: 20px;
     transition: box-shadow 0.3s ease;
-    background-color: #fafafa;
+    background-color: #e1e1e1;
 }
 
 .blog-card-link {
@@ -104,6 +115,27 @@ import { blogPosts } from '../data/blogPosts';
     line-height: 1.6;
     font-family: "Helvetica-Regular", Helvetica;
     text-align: justify;
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-card {
+    animation: fadeSlideUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+:deep(.animate-card) {
+    animation: fadeSlideUp 0.6s ease forwards;
+    opacity: 0;
 }
 
 @media (max-width: 768px) {

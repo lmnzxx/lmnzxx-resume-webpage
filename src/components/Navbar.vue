@@ -1,7 +1,7 @@
 <template>
     <div class="navbar" :class="{ scrolled: isScrolled }" :style="navbarStyle">
         <div class="navbar-content">
-            <a class="tittle-navbar" :class="{ active: isMenuOpen }" href="#home" @click.prevent="scrollTo('home')">lmnzxx</a>
+            <router-link class="tittle-navbar" :to="{ path: '/', hash: '#home' }" @click.prevent="handleNavClick('home')">lmnzxx</router-link>
             <div class="hamburger-menu" :class="{ open: isMenuOpen }" @click="toggleMenu">
                 <span></span>
                 <span></span>
