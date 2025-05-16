@@ -8,11 +8,22 @@
                 <span></span>
             </div>
             <ul :class="['navigation-list', { 'active': isMenuOpen }]">
-                <li><a href="#home" @click.prevent="scrollTo('home')">Home</a></li>
-                <li><a href="#about" @click.prevent="scrollTo('about')">About</a></li>
-                <li><a href="#portofolio" @click.prevent="scrollTo('portofolio')">Portofolio</a></li>
-                <li><a href="#contact" @click.prevent="scrollTo('contact')">Contact</a></li>
-            </ul>
+                <li>
+                    <router-link :to="{ path: '/', hash: '#home' }" @click.prevent="handleNavClick">Home</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ path: '/', hash: '#about' }" @click.prevent="handleNavClick">About</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ path: '/', hash: '#portofolio' }" @click.prevent="handleNavClick">Portofolio</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ path: '/', hash: '#contact' }" @click.prevent="handleNavClick">Contact</router-link>
+                </li>
+                <li style="margin-right: 0 !important;">
+                    <router-link to="/blog" @click.prevent="handleNavClick">Blog</router-link>
+                </li>
+                </ul>
             <div class="navlist-bg" :class="{ 'active': isMenuOpen }" @click="closeMenu">
             </div>
         </div>
@@ -24,13 +35,10 @@
 
     const isScrolled = ref<boolean>(false);
     const isMenuOpen = ref<boolean>(false);
+    const isMenuVisible = ref(false);
 
     const handleScroll = (): void => {
         isScrolled.value = window.scrollY > 50;
-    };
-
-    const toggleMenu = (): void => {
-        isMenuOpen.value = !isMenuOpen.value;
     };
 
     const scrollTo = (id: string): void => {
@@ -42,9 +50,29 @@
             });
         }
     };
-    
-    const closeMenu = (): void => {
+
+    const handleNavClick = (id?: string) => {
+        if (id) scrollTo(id);
+        closeMenu();
+    };
+
+    const toggleMenu = () => {
+        if (!isMenuOpen.value) {
+            isMenuOpen.value = true;
+            isMenuVisible.value = true;
+        } else {
+            isMenuOpen.value = false;
+            setTimeout(() => {
+            isMenuVisible.value = false;
+            }, 500);
+        }
+    };
+
+    const closeMenu = () => {
         isMenuOpen.value = false;
+        setTimeout(() => {
+            isMenuVisible.value = false;
+        }, 500);
     };
 
     const navbarStyle = computed(() => {
@@ -65,8 +93,6 @@
         
         setViewportHeight();
         window.addEventListener("resize", setViewportHeight);
-
-        return () => window.removeEventListener("resize", setViewportHeight);
     });
 
     onUnmounted(() => {
@@ -201,6 +227,7 @@
             display: flex;
             transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
             transform: translateX(100%);
+            z-index: 101;
             flex-direction: column;
             position: absolute;
             top: 0;
@@ -215,8 +242,9 @@
         }
         .navlist-bg {
             list-style: none;
-            display: none;
-            transition: opacity 0.5s ease-in-out;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
             opacity: 0;
             top: 0;
             left: 0;
@@ -225,6 +253,7 @@
             background: rgba(255, 255, 255, 0.2); 
             backdrop-filter: blur(10px); 
             position: fixed;
+            z-index: 100;
         }
         .navigation-list.active {
             transform: translateX(0);
@@ -232,7 +261,9 @@
             opacity: 1;
         }
         .navlist-bg.active {
-            display: flex;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+            visibility: visible;
+            pointer-events: auto;
             opacity: 1; 
             z-index: 100;
         }

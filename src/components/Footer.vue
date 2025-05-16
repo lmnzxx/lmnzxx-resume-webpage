@@ -17,7 +17,7 @@
                 </div>
                 <div class="footer-right">
                     <h4>Support Document</h4>
-                    <a href="/Resume.pdf" download>Download CV</a>
+                    <a href="/Resume.pdf" download>Download my Resume</a>
                 </div>
             </div>
             <div class="footer-middle">
@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
     setup() {

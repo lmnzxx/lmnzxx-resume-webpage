@@ -49,7 +49,6 @@ const validateEmail = () => {
     isEmailValid.value = emailPattern.test(formData.value.email);
 };
 
-
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSe2_Zfd7jRFGUa-AWpn9yRfcv6YBcaXzuRGjJ43KtgJkvugGg/formResponse";
 
 const FORM_FIELDS = {
