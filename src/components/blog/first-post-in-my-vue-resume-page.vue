@@ -25,9 +25,11 @@
 
 <style scoped>
     .blog-post {
+        min-height: 50vh;
         background-color: #ffffff;
         padding-top: 100px;
         padding-bottom: 60px;
+        font-family: "Helvetica-Regular", Helvetica;
     }
     .container {
         max-width: 1200px;

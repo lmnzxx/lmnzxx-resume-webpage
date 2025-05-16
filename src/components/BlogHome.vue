@@ -32,6 +32,7 @@ import { blogPosts } from '../data/blogPosts';
     align-items: flex-start;
     background-color: #ffffff;
     padding-top: 100px;
+    font-family: "Helvetica-Regular", Helvetica;
 }
 
 .container {
