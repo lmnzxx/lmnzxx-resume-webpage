@@ -9,10 +9,10 @@
                 <div class="footer-center">
                     <h4>Link</h4>
                     <nav>
-                        <a href="#home" @click.prevent="scrollTo('home')">Home</a>
-                        <a href="#about" @click.prevent="scrollTo('about')">About</a>
-                        <a href="#portofolio" @click.prevent="scrollTo('portofolio')">Portofolio</a>
-                        <a href="#contact" @click.prevent="scrollTo('contact')">Contact</a>
+                        <router-link :to="{ path: '/', hash: '#home' }" @click.prevent="scrollTo">Home</router-link>
+                        <router-link :to="{ path: '/', hash: '#about' }" @click.prevent="scrollTo">About</router-link>
+                        <router-link :to="{ path: '/', hash: '#portofolio' }" @click.prevent="scrollTo">Portofolio</router-link>
+                        <router-link :to="{ path: '/', hash: '#contact' }" @click.prevent="scrollTo">Contact</router-link>
                     </nav>
                 </div>
                 <div class="footer-right">

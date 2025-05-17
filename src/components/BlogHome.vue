@@ -13,6 +13,7 @@
                         :style="{ animationDelay: `${index * 150}ms` }"
                         >
                             <h3 class="blog-title">{{ post.title }}</h3>
+                            <p class="blog-date">{{ formatDate(post.date) }}</p>
                             <p class="blog-snippet">{{ post.excerpt.slice(0, 200) }}..</p>
                         </div>
                     </router-link>
@@ -27,6 +28,14 @@
     import { onMounted, ref } from 'vue';
 
     const blogPosts = ref<typeof allPosts>([]);
+
+    const formatDate = (dateStr: string): string => {
+        const date = new Date(dateStr);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    };
 
     onMounted(() => {
         setTimeout(() => {
@@ -59,14 +68,6 @@
     text-align: left;
 }
 
-.tittle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 30px;
-    font-family: "Helvetica-Regular", Helvetica;
-}
-
 .blog-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -91,7 +92,6 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* hover effect tetap jalan */
 }
 
-
 .blog-card:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
@@ -102,11 +102,20 @@
     color: #333;
     text-decoration: none;
     font-family: "Helvetica-Bold", Helvetica;
+    margin-bottom: 10px !important;
 }
 
 .blog-title:hover {
     color: #727272;
 }
+
+.blog-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+    font-family: "Helvetica-Regular", Helvetica;
+}
+
 
 .blog-snippet {
     margin-top: 10px;
