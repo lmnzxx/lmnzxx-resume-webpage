@@ -178,7 +178,7 @@
         justify-content: space-between;
         height: 20px;
         cursor: pointer;
-        z-index: 102;
+        z-index: 103;
         transition: transform 0.3s ease-in-out;
     }
 
@@ -210,7 +210,7 @@
             display: flex;
         }
         .tittle-navbar {
-            z-index: 103;
+            z-index: 100;
         }
         .tittle-navbar.active {
             z-index: 100;
@@ -257,7 +257,7 @@
         }
         .navigation-list.active {
             transform: translateX(0);
-            z-index: 101;
+            z-index: 102;
             opacity: 1;
         }
         .navlist-bg.active {
@@ -265,7 +265,7 @@
             visibility: visible;
             pointer-events: auto;
             opacity: 1; 
-            z-index: 100;
+            z-index: 101;
         }
         .navigation-list.open ~ .tittle-navbar { 
             opacity: 0;

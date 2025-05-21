@@ -13,6 +13,7 @@
                         <router-link :to="{ path: '/', hash: '#about' }" @click.prevent="scrollTo">About</router-link>
                         <router-link :to="{ path: '/', hash: '#portofolio' }" @click.prevent="scrollTo">Portofolio</router-link>
                         <router-link :to="{ path: '/', hash: '#contact' }" @click.prevent="scrollTo">Contact</router-link>
+                        <router-link to="/blog" @click.prevent="scrollTo">Blog</router-link>
                     </nav>
                 </div>
                 <div class="footer-right">
