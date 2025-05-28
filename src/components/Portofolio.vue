@@ -47,14 +47,9 @@
             image: "/img/project1.png",
         },
         {
-            title: "Project 2",
-            description: "A web-based car rental booking system built with PHP. It allows customers to search, book, and manage car rentals online while helping rental owners manage vehicle data and transactions efficiently.",
-            image: "/img/project1.png",
-        },
-        {
-            title: "Project 3",
-            description: "A web-based car rental booking system built with PHP. It allows customers to search, book, and manage car rentals online while helping rental owners manage vehicle data and transactions efficiently.",
-            image: "/img/project1.png",
+            title: "Bali Tour and Travel Landing-page",
+            description: "Landing page for a fictional project, showcasing modern design and responsive layout. It features a clean interface with sections for services, testimonials, and contact information, built using vue.js. It is designed to be visually appealing and user-friendly, providing an excellent user experience.",
+            image: "/img/project2.png",
         },
     ]);
 
